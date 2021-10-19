@@ -1,7 +1,8 @@
-package br.com.jose.criptoconverter
+package br.com.jose.criptoconverter.ui
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import br.com.jose.criptoconverter.R
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
