@@ -1,12 +1,12 @@
 package br.com.jose.criptoconverter.data.repository
 
-import br.com.jose.criptoconverter.data.model.ExchangeResponse
+import br.com.jose.criptoconverter.data.model.ExchangeResponseValue
 import kotlinx.coroutines.flow.Flow
 
 
 interface CryptoRepository {
-    suspend fun getExchangeResponse(coin: String): Flow<ExchangeResponse>
+    suspend fun getExchangeValue(coin: String): Flow<ExchangeResponseValue>
 
-    suspend fun save(exchange: ExchangeResponse)
-    fun list(): Flow<List<ExchangeResponse>>
+    suspend fun save(exchange: ExchangeResponseValue)
+    fun list(): Flow<List<ExchangeResponseValue>>
 }

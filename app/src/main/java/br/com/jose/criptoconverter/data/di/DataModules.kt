@@ -3,7 +3,7 @@ package br.com.jose.criptoconverter.data.di
 import android.util.Log
 import br.com.jose.criptoconverter.data.repository.CryptoRepository
 import br.com.jose.criptoconverter.data.repository.CryptoRepositoryImpl
-import br.com.jose.criptoconverter.data.services.AwesomeService
+import br.com.jose.criptoconverter.data.services.MercadoBitcoinService
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
@@ -38,22 +38,20 @@ object DataModules {
                 GsonConverterFactory.create(GsonBuilder().create())
             }
             single {
-                createService<AwesomeService>(get(), get())
+                createService<MercadoBitcoinService>(get(), get())
             }
         }
     }
 
     private fun repositoryModule(): Module {
         return module {
-            single<CryptoRepository> {
-                CryptoRepositoryImpl(get())
-            }
+            single<CryptoRepository> { CryptoRepositoryImpl(get()) }
         }
     }
 
     private inline fun <reified T> createService(client: OkHttpClient, factory: GsonConverterFactory): T {
         return Retrofit.Builder()
-            .baseUrl("https://economia.awesomeapi.com.br")
+            .baseUrl("https://www.mercadobitcoin.net/api/")
             .client(client)
             .addConverterFactory(factory)
             .build()
