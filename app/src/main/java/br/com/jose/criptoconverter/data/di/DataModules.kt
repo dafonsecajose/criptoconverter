@@ -1,12 +1,14 @@
 package br.com.jose.criptoconverter.data.di
 
 import android.util.Log
+import br.com.jose.criptoconverter.data.database.AppDatabase
 import br.com.jose.criptoconverter.data.repository.CryptoRepository
 import br.com.jose.criptoconverter.data.repository.CryptoRepositoryImpl
 import br.com.jose.criptoconverter.data.services.MercadoBitcoinService
 import com.google.gson.GsonBuilder
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import org.koin.android.ext.koin.androidApplication
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
@@ -18,7 +20,13 @@ object DataModules {
     private const val HTTP_TAG = "OkHttp"
 
     fun load() {
-        loadKoinModules(networkModule() + repositoryModule())
+        loadKoinModules(networkModule() + repositoryModule() + databaseModule())
+    }
+
+    private fun databaseModule(): Module {
+        return module {
+            single { AppDatabase.getInstance(androidApplication()) }
+        }
     }
 
     private fun networkModule(): Module {
