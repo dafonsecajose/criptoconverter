@@ -3,6 +3,7 @@ package br.com.jose.criptoconverter.ui
 import android.os.Build
 import android.os.Bundle
 import android.widget.ArrayAdapter
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.widget.doAfterTextChanged
 import br.com.jose.criptoconverter.R
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
         with(binding) {
             edValue.doAfterTextChanged {
                 btnConverter.isEnabled = it != null && it.toString().isNotEmpty()
+                btnSave.isEnabled = false
             }
 
             btnConverter.setOnClickListener {
@@ -38,6 +40,11 @@ class MainActivity : AppCompatActivity() {
                 val search = tilFrom.text
                 viewModel.getExchangeModel(search)
                 viewModel.setConvertValue(binding.tilValue.text.toBigDecimal())
+            }
+
+            btnSave.setOnClickListener {
+                it.hideSoftKeyboard()
+                viewModel.saveExchange()
             }
         }
     }
@@ -65,6 +72,10 @@ class MainActivity : AppCompatActivity() {
                 is MainViewModel.State.Success -> {
                     dialog.dismiss()
                 }
+                MainViewModel.State.Saved -> {
+                    dialog.dismiss()
+                    Toast.makeText(this, "Conversão salva com sucesso", Toast.LENGTH_LONG).show()
+                }
             }
         }
 
@@ -79,6 +90,9 @@ class MainActivity : AppCompatActivity() {
                 }
             }
             binding.tvResult.text = it.formatCurrency()
+            if (it != null){
+                binding.btnSave.isEnabled = true
+            }
         }
     }
 }

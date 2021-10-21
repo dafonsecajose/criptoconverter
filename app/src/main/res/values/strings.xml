@@ -3,4 +3,5 @@
     <string name="label_value">Valor</string>
     <string name="label_from">Converte de:</string>
     <string name="label_convert_btn">Converter para Real</string>
+    <string name="label_save">Save</string>
 </resources>

@@ -2,7 +2,6 @@ package br.com.jose.criptoconverter.data.model
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import java.math.BigDecimal
 
 typealias ExchangeResponse = HashMap<String, ExchangeResponseValue>
 
@@ -10,5 +9,7 @@ typealias ExchangeResponse = HashMap<String, ExchangeResponseValue>
 data class ExchangeResponseValue(
     @PrimaryKey(autoGenerate = true)
     val id: Long,
-    val last: BigDecimal,
+    val last: Double,
+    val date: Long,
+    var valueBrl: Double
 )

@@ -67,12 +67,22 @@
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_save"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/label_save"
+        android:layout_marginTop="@dimen/default_padding"
+        app:layout_constraintTop_toBottomOf="@+id/til_from"
+        app:layout_constraintStart_toStartOf="@id/guide_start"
+        app:layout_constraintEnd_toEndOf="@id/guide_end"/>
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_converter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:text="@string/label_convert_btn"
         android:layout_marginTop="@dimen/default_padding"
-        app:layout_constraintTop_toBottomOf="@+id/til_from"
+        app:layout_constraintTop_toBottomOf="@+id/btn_save"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toEndOf="@id/guide_end"/>
 

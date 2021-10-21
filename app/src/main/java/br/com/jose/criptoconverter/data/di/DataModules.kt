@@ -53,7 +53,7 @@ object DataModules {
 
     private fun repositoryModule(): Module {
         return module {
-            single<CryptoRepository> { CryptoRepositoryImpl(get()) }
+            single<CryptoRepository> { CryptoRepositoryImpl(get(), get()) }
         }
     }
 
