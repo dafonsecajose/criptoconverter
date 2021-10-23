@@ -1,7 +1,10 @@
-package br.com.jose.criptoconverter.ui
+package br.com.jose.criptoconverter.ui.main
 
+import android.content.Intent
 import android.os.Build
 import android.os.Bundle
+import android.view.Menu
+import android.view.MenuItem
 import android.widget.ArrayAdapter
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
@@ -11,6 +14,7 @@ import br.com.jose.criptoconverter.core.extensions.*
 import br.com.jose.criptoconverter.data.model.CryptoCoin
 import br.com.jose.criptoconverter.databinding.ActivityMainBinding
 import br.com.jose.criptoconverter.presentation.MainViewModel
+import br.com.jose.criptoconverter.ui.history.HistoryActivity
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class MainActivity : AppCompatActivity() {
@@ -26,8 +30,21 @@ class MainActivity : AppCompatActivity() {
         bindAdapters()
         bindListeners()
         bindObserver()
+
+        setSupportActionBar(binding.toolbar)
     }
 
+    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
+        menuInflater.inflate(R.menu.main_menu, menu)
+        return super.onCreateOptionsMenu(menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if(item.itemId == R.id.action_history){
+            startActivity(Intent(this, HistoryActivity::class.java))
+        }
+        return super.onOptionsItemSelected(item)
+    }
     private fun bindListeners() {
         with(binding) {
             edValue.doAfterTextChanged {

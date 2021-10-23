@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.MainActivity">
+    tools:context=".ui.main.MainActivity">
 
    <com.google.android.material.appbar.MaterialToolbar
        android:id="@+id/toolbar"
@@ -72,6 +72,7 @@
         android:layout_height="wrap_content"
         android:text="@string/label_save"
         android:layout_marginTop="@dimen/default_padding"
+        android:enabled="false"
         app:layout_constraintTop_toBottomOf="@+id/til_from"
         app:layout_constraintStart_toStartOf="@id/guide_start"
         app:layout_constraintEnd_toEndOf="@id/guide_end"/>
@@ -80,6 +81,7 @@
         android:id="@+id/btn_converter"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:enabled="false"
         android:text="@string/label_convert_btn"
         android:layout_marginTop="@dimen/default_padding"
         app:layout_constraintTop_toBottomOf="@+id/btn_save"

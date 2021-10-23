@@ -11,5 +11,7 @@ data class ExchangeResponseValue(
     val id: Long,
     val last: Double,
     val date: Long,
-    var valueBrl: Double
+    var valueBrl: Double,
+    var codeIn: String,
+    var shouldBeExpanded: Boolean = false,
 )

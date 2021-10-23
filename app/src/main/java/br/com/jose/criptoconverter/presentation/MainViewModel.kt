@@ -38,7 +38,7 @@ class MainViewModel(
                     _state.value = State.Error(it)
                 }
                 .collect {
-                    converterCrypto(it)
+                    converterCrypto(it, coin)
                     _state.value = State.Success(it)
                 }
         }
@@ -64,9 +64,10 @@ class MainViewModel(
         _converterValue.value = value
     }
 
-    private fun converterCrypto(exchange: ExchangeResponseValue){
+    private fun converterCrypto(exchange: ExchangeResponseValue, coin: String){
         _result.value = exchange.last.toBigDecimal() * _converterValue.value?.toDouble()?.toBigDecimal()!!
         exchange.valueBrl = _converterValue.value?.toDouble()!!
+        exchange.codeIn = coin
         exchangeValue = exchange
 
     }

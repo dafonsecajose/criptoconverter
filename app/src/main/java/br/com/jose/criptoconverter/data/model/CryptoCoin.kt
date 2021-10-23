@@ -5,4 +5,8 @@ enum class CryptoCoin(val description: String) {
     BTC("BITCOIN BTC"),
     ETH("ETHERIUM"),
     LTC("LITECOIN");
+
+   companion object {
+       fun getByName(name: String) = values().find { it.name == name }
+   }
 }
